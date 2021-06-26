@@ -1,6 +1,6 @@
 import './style.css';
 import * as THREE from 'three';
-
+import * as dat from 'dat.gui';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 // Sizes
@@ -24,6 +24,7 @@ window.addEventListener('resize', () => {
 });
 
 const canvas = document.querySelector('canvas.webgl');
+const gui = new dat.GUI();
 
 /**
  * Scene
@@ -86,3 +87,8 @@ const material = new THREE.MeshBasicMaterial({ color: 'red' });
 
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
+
+// Debug
+gui.add(mesh.position, 'y').min(-3).max(3).step(0.01).name('red cube y');
+gui.add(mesh.position, 'x').min(-3).max(3).step(0.01).name('red cube x');
+gui.add(mesh.position, 'z').min(-3).max(3).step(0.01).name('red cube z');
